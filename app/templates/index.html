@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>病虫害识别系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-bug"></i> 农作物病虫害识别系统</h1>
+            <p>上传农作物图片，检测可能存在的病虫害</p>
+        </header>
+
+        <div class="upload-area" id="uploadArea">
+            <div class="upload-box">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>点击或拖拽图片到此处</p>
+                <input type="file" id="fileInput" accept="image/*">
+            </div>
+        </div>
+
+        <div class="result-area" id="resultArea" style="display: none;">
+            <div class="image-container">
+                <img id="previewImage" src="" alt="预览图">
+                <canvas id="resultCanvas"></canvas>
+            </div>
+            <div class="detection-results">
+                <h2>检测结果</h2>
+                <div class="results-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>病虫害类型</th>
+                                <th>置信度</th>
+                                <th>位置</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsBody">
+                            <!-- 结果将在这里动态生成 -->
+                        </tbody>
+                    </table>
+                </div>
+                <button id="resetBtn" class="btn">重新上传</button>
+            </div>
+        </div>
+
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>正在分析图片...</p>
+        </div>
+
+        <footer>
+            <p>基于YOLOv11模型的病虫害识别系统 &copy; 2025</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
